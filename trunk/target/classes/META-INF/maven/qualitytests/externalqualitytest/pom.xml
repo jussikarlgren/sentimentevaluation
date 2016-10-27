@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>qualitytests</groupId>
+	<artifactId>externalqualitytest</artifactId>
+	<version>1.0</version>
+	<dependencies>	
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2.8-b01</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jettison</groupId>
+			<artifactId>jettison</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+	</dependencies>
+
+
+	<scm>
+		<developerConnection>scm:svn:https://devel.gavagai.se/svn/rabbit-quality/trunk</developerConnection>
+	</scm>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>onejar-maven-plugin.googlecode.com</id>
+			<url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+	<repositories>
+		<repository>
+			<id>jboss-releases</id>
+			<name>JBOSS Releases</name>
+			<url>http://repository.jboss.org/nexus/content/repositories/releases</url>
+		</repository>
+
+		<repository>
+			<id>jboss-deprecated</id>
+			<name>JBOSS Deprecated</name>
+			<url>http://repository.jboss.org/nexus/content/repositories/deprecated</url>
+		</repository>
+		<repository>
+			<id>java-selenium</id>
+			<name>Java Selenium</name>
+			<url>http://nexus.openqa.org/content/repositories/releases/</url>
+		</repository>
+		<repository>
+			<id>java-net</id>
+			<name>Java.net Repository for Maven 2</name>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+		<repository>
+			<id>central</id>
+			<name>Maven Central Denmark</name>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+		</repository>
+		<repository>
+			<id>gavagai</id>
+			<name>gavagai local repo</name>
+			<url>https://devel.gavagai.se/maven2</url>
+		</repository>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+		<repository>
+			<id>mavenstandard</id>
+			<name>Ibiblio mirror</name>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>maven1-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/1/</url>
+		</repository>
+		<repository>
+			<id>google-maven-snapshot-repository</id>
+			<name>Google Maven Snapshot Repository</name>
+			<url>https://oss.sonatype.org/content/repositories/google/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.gavagai.quality.rest.SentimentRestBenchmark</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.dstovall</groupId>
+				<artifactId>onejar-maven-plugin</artifactId>
+				<version>1.4.4</version>
+				<executions>
+					<execution>
+						<configuration>
+							<!-- Optional -->
+							<onejarVersion>0.97</onejarVersion>
+							<!-- Optional, default is false -->
+							<attachToBuild>true</attachToBuild>
+							<!-- Optional, default is "onejar" -->
+							<classifier>onejar</classifier>
+						</configuration>
+						<goals>
+							<goal>one-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
